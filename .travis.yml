@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker_container
+
+before_install:
+  - docker build -t fcaico/docker-react -f Dockerfile.dev . 
+  
+script:
+  - docker run -e CI=true fcaico/docker-react npm run test
+  
